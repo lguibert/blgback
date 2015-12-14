@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="col-sm-9 col-md-12 main">
+        <h1 class="page-header">Liste des accidents signalés</h1>
+
+        <div class="table-responsive">
+            <table id="table_alerts" class="table table-striped" ng-controller="AlertsController">
+                <thead>
+                <tr>
+                    <th>
+                        <div class="primary">Heure</div>
+                        <div class="primary">Adresse</div>
+                        <div class="primary">Date et heure</div>
+                        <div class="primary">Numéro de téléphone</div>
+                        <div class="primary">Etat</div>
+                        <div class="primary">Action</div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="hoverable" ng-class="seriousness(alert.state)" ng-repeat="alert in alerts">
+                    <td ng-click="showDetails($event)">
+                        <div>
+                            <div class="primary">{{alert.time | date:'dd/MM/yyyy à HH:mm:ss'}}</div>
+                            <div class="primary">{{alert.address}}</div>
+                            <div class="primary">{{alert.user.firstname}} {{alert.user.lastname}}</div>
+                            <div class="primary">{{alert.user.phone}}</div>
+                            <div class="primary">{{alert.state}}</div>
+                            <div class="primary">
+                                <button class="btn btn-default">Terminé</button>
+                            </div>
+                        </div>
+                        <div id="{{alert.uuid}}" class="details">
+                            <ul>
+                                <div class="pack">
+                                    <li><span class="label-details">Sexe:</span> {{alert.user.gender | gender}}</li>
+                                    <li><span class="label-details">Groupe sanguin:</span> {{alert.user.bloodGroup |
+                                        bloodgroup}}
+                                    </li>
+                                    <li><span class="label-details">Langues parlées:</span> {{alert.user.languages}}</li>
+                                </div>
+                                <div class="pack">
+                                <li><span class="label-details">Allergies:</span> {{alert.user.allergies}}</li>
+                                <li><span class="label-details">Traitement pris:</span> {{alert.user.medecine}}</li>
+                                <li><span class="label-details">Problème de santé connus:</span>
+                                    {{alert.user.healthIssues}}
+                                </li>
+                                </div>
+                                <div class="pack">
+                                    <li><span class="label-details">Contact prioritaire:</span>
+                                        {{alert.user.repLegalFirstname}} {{alert.user.repLegalLastname}}
+                                    </li>
+                                    <li><span class="label-details">Téléphone du contact:</span>
+                                        {{alert.user.repLegalPhone}}
+                                    </li>
+                                </div>
+                                <li><span class="label-details">Commentaire:</span> {{alert.user.comments}}</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

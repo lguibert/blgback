@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="blgback">
+<head>
+    <meta charset="UTF-8">
+    <title>Biker Life Guardian</title>
+
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="bower_components/datatables.net-dt/css/jquery.dataTables.min.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="media/img/BLG.png"> Biker Life Guardian</a>
+        </div>
+    </div>
+</nav>
+
+<section id="wrap">
+    <div id="main">
+        <div class="message"></div>
+        <div ng-controller="MainController">
+            <div class="loading" ng-show="loading">
+                <div>
+                    <img src="media/img/loader.gif"/>
+                    <span>Chargement...</span>
+                </div>
+            </div>
+        </div>
+        <div ng-view></div>
+    </div>
+</section>
+
+</body>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="media/js/messages.js"></script>
+
+<script src="media/js/angular/app.js"></script>
+<script src="media/js/angular/routes.js"></script>
+<script src="media/js/angular/alerts.js"></script>
+<script src="media/js/angular/filter.js"></script>
+</html>
