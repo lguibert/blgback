@@ -93,8 +93,19 @@ a img {
   vertical-align: middle;
 }
 #table_alerts .primary {
-  width: 16.28571429%;
+  min-width: 16.28571429%;
   display: inline-block;
+  position: relative;
+}
+#table_alerts .primary a {
+  color: black;
+}
+#table_alerts .primary img {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  left: 55px;
+  top: -5px;
 }
 #table_alerts td li {
   font-weight: bold;
@@ -102,7 +113,7 @@ a img {
 #table_alerts td .pack {
   display: block;
   float: left;
-  min-width: 25%;
+  min-width: 20%;
 }
 #table_alerts td .details {
   display: none;
@@ -110,7 +121,7 @@ a img {
 #table_alerts td .details-active {
   width: 100%;
   display: inline-block;
-  border-top: 1px solid lightgray;
+  border-top: 2px dotted white;
   margin-top: 10px;
   padding-top: 5px;
 }
@@ -118,8 +129,21 @@ a img {
   display: inline-block;
   font-weight: normal;
 }
+.seriousness-ultra-hard {
+  background-color: #ab0507 !important;
+  color: white!important;
+}
+.seriousness-ultra-hard a {
+  color: white!important;
+}
 .seriousness-hard {
   background-color: #FFCCCC !important;
+}
+.seriousness-normal {
+  background-color: #ffa340 !important;
+}
+.seriousness-easy {
+  background-color: #fff768 !important;
 }
 .hoverable:hover {
   cursor: pointer;

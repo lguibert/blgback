@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="media/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="media/css/dashboard.css"/>
     <link rel="stylesheet" type="text/css" href="bower_components/datatables.net-dt/css/jquery.dataTables.min.css"/>
+
+    <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
 
@@ -21,7 +23,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="media/img/BLG.png"> Biker Life Guardian</a>
+            <a class="navbar-brand" href="#/"><img src="media/img/BLG.png"> Biker Life Guardian <img src="media/img/loading.svg" ng-controller="MainController" ng-show="loading"/></a>
         </div>
     </div>
 </nav>
@@ -29,14 +31,6 @@
 <section id="wrap">
     <div id="main">
         <div class="message"></div>
-        <div ng-controller="MainController">
-            <div class="loading" ng-show="loading">
-                <div>
-                    <img src="media/img/loader.gif"/>
-                    <span>Chargement...</span>
-                </div>
-            </div>
-        </div>
         <div ng-view></div>
     </div>
 </section>
@@ -53,4 +47,6 @@
 <script src="media/js/angular/routes.js"></script>
 <script src="media/js/angular/alerts.js"></script>
 <script src="media/js/angular/filter.js"></script>
+
+
 </html>

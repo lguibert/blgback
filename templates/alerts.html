@@ -12,25 +12,28 @@
                         <div class="primary">Date et heure</div>
                         <div class="primary">Numéro de téléphone</div>
                         <div class="primary">Etat</div>
-                        <div class="primary">Action</div>
+                        <div class="primary">Action <img ng-controller="MainController" ng-show="loading_action" src="media/img/loading.gif"></div>
                     </th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="hoverable" ng-class="seriousness(alert.state)" ng-repeat="alert in alerts">
+                <tr class="hoverable" ng-class="seriousness(alert.speed * 3.6)" ng-repeat="alert in alerts">
                     <td ng-click="showDetails($event)">
                         <div>
                             <div class="primary">{{alert.time | date:'dd/MM/yyyy à HH:mm:ss'}}</div>
                             <div class="primary">{{alert.address}}</div>
                             <div class="primary">{{alert.user.firstname}} {{alert.user.lastname}}</div>
-                            <div class="primary">{{alert.user.phone}}</div>
-                            <div class="primary">{{alert.state}}</div>
+                            <div class="primary"><a href="tel:{{alert.user.phone}}">{{alert.user.phone | phoneformat}}</a></div>
+                            <div class="primary">{{alert.state}} </div>
                             <div class="primary">
-                                <button class="btn btn-default">Terminé</button>
+                                <button class="btn btn-default actionable" ng-click="end_alert(alert.uuid)">Terminé</button>
                             </div>
                         </div>
                         <div id="{{alert.uuid}}" class="details">
                             <ul>
+                                <div class="pack">
+                                    <li><span class="label-details">Vitesse:</span> {{alert.speed * 3.6}} km/h</li>
+                                </div>
                                 <div class="pack">
                                     <li><span class="label-details">Sexe:</span> {{alert.user.gender | gender}}</li>
                                     <li><span class="label-details">Groupe sanguin:</span> {{alert.user.bloodGroup |

@@ -1,18 +1,43 @@
-app.filter('gender', function() {
-    return function(input) {
-        if(input == 1){
+app.filter('gender', function () {
+    return function (input) {
+        if (input == 1) {
             return "Homme";
-        }else if(input == 0){
+        } else if (input == 0) {
             return "Femme";
-        }else{
+        } else {
             return null;
         }
     };
 });
 
-app.filter('bloodgroup', function() {
-    return function(input) {
-        switch (input){
+app.filter('phoneformat', function () {
+    return function (input) {
+        if(input.match(/[+]/)){
+            console.log(input.length);
+            var deb = input.slice(0,3);
+            input = "0" + input.slice(3,input.length);
+            var final = "("+deb+") ";
+        }else{
+            var final = '';
+        }
+
+        var parts = input.match(/[\s\S]{1,2}/g) || [];
+
+
+        for (part in parts) {
+            if(part != parts.length - 1){
+                final = final + parts[part] + ".";
+            }else{
+                final = final + parts[part];
+            }
+        }
+        return final;
+    };
+});
+
+app.filter('bloodgroup', function () {
+    return function (input) {
+        switch (input) {
             case 0:
                 return "O+";
                 break;

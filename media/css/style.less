@@ -1,6 +1,9 @@
 @bg_error: #FFCCCC;
 @bg_success: #B9F6CA;
-@bg_warning: #F4FF81;
+@bg_warning: #ffa340;
+@bg_easy : #fff768;
+@bg_ultra_error: #ab0507;
+
 
 @color_error: #DA300E;
 @color_success: #3c763d;
@@ -121,8 +124,19 @@ a{
   text-align: left;
   vertical-align: middle;
   .primary{
-    width: 100%/@num_col+2;
+    min-width: 100%/@num_col+2;
     display: inline-block;
+    position: relative;
+    a{
+      color:black;
+    }
+    img{
+      height: 32px;
+      width: 32px;
+      position: absolute;
+      left: 55px;
+      top:-5px;
+    }
   }
   td{
     li{
@@ -131,7 +145,7 @@ a{
     .pack{
       display: block;
       float: left;
-      min-width: 100%/4;
+      min-width: 100%/5;
     }
     .details{
       display: none;
@@ -139,7 +153,7 @@ a{
     .details-active{
       width: 100%;
       display:inline-block;
-      border-top: 1px solid lightgray;
+      border-top: 2px dotted white;
       margin-top: 10px;
       padding-top: 5px;
       .label-details{
@@ -150,9 +164,26 @@ a{
   }
 }
 
+.seriousness-ultra-hard{
+  background-color: @bg_ultra_error!important;
+  color:white!important;
+  a{
+    color:white!important;
+  }
+}
+
 .seriousness-hard{
     background-color: @bg_error!important;
 }
+
+.seriousness-normal{
+  background-color: @bg_warning!important;
+}
+
+.seriousness-easy{
+  background-color: @bg_easy!important;
+}
+
 
 .hoverable:hover{
   cursor: pointer;
