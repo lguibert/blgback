@@ -184,7 +184,25 @@ a{
   background-color: @bg_easy!important;
 }
 
-
 .hoverable:hover{
   cursor: pointer;
+}
+
+#login {
+  position: absolute;
+  left: 35%;
+  overflow: hidden;
+  width: 480px;
+  background-color: @back_transparent;
+  padding-bottom: 20px;
+  form {
+    .fullsized;
+    button {
+      margin: 20px auto auto auto;
+      display: block;
+    }
+    label {
+      margin-top: 20px;
+    }
+  }
 }

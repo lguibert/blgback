@@ -1,4 +1,4 @@
-var app = angular.module('blgback', ['ngRoute']);
+var app = angular.module('blgback', ['ngRoute', 'ngCookies']);
 var server = "http://10.133.128.36:3000/";
 
 app.service('LoadingState', ['$rootScope', function ($rootScope) {

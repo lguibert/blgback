@@ -26,6 +26,7 @@
                             <div class="primary"><a href="tel:{{alert.user.phone}}">{{alert.user.phone | phoneformat}}</a></div>
                             <div class="primary">{{alert.state}} </div>
                             <div class="primary">
+                                <button class="btn btn-default actionable" ng-click="take_charge()">Prendre en charge</button>
                                 <button class="btn btn-default actionable" ng-click="end_alert(alert.uuid)">Terminé</button>
                             </div>
                         </div>

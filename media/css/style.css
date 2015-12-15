@@ -148,3 +148,22 @@ a img {
 .hoverable:hover {
   cursor: pointer;
 }
+#login {
+  position: absolute;
+  left: 35%;
+  overflow: hidden;
+  width: 480px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 20px;
+}
+#login form {
+  height: 100%;
+  width: 100%;
+}
+#login form button {
+  margin: 20px auto auto auto;
+  display: block;
+}
+#login form label {
+  margin-top: 20px;
+}

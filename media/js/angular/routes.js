@@ -1,12 +1,12 @@
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when("/", {templateUrl: 'templates/alerts.html'})
+        .when("/login", {templateUrl: 'templates/login.html'})
 
         //.when('/user/new/', {templateUrl: 'templates/user/add_user.html', data: {role: ['admin']}})
-        .otherwise({redirectTo: '/'});
+        .otherwise({redirectTo: '/login'});
 }]);
 
-/*
 app.run(['$rootScope', '$location', '$cookieStore', '$http', function ($rootScope, $location, $cookieStore, $http) {
 // keep user logged in after page refresh
 
@@ -32,9 +32,9 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http', function ($rootScop
                 var right = $.inArray($rootScope.globals.currentUser.role, roles);
 
                 if(right === -1){
-                    $location.path('/myaccount');
+                    $location.path('/');
                 }
             }
         }
     });
-}]);*/
+}]);
