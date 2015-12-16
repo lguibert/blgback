@@ -12,7 +12,7 @@ app.factory('AlertsFactory', ['$http', '$q', function ($http, $q) {
                 });
             return deferred.promise;
         },
-        takeInCharge: function (json,uuid) {
+        updateAlert: function (json,uuid) {
             var deferred = $q.defer();
             $http({
                 method: 'PUT',
@@ -35,7 +35,7 @@ app.factory('AlertsFactory', ['$http', '$q', function ($http, $q) {
 app.controller('AlertsController', ['$scope', '$rootScope', 'AlertsFactory', 'LoadingState', '$interval', function ($scope, $rootScope, AlertsFactory, LoadingState, $interval) {
     refrechAlerts();
 
-    $interval(refrechAlerts, 5000);
+   // $interval(refrechAlerts, 5000);
 
 
     function refrechAlerts(){
@@ -88,16 +88,24 @@ app.controller('AlertsController', ['$scope', '$rootScope', 'AlertsFactory', 'Lo
     };
 
     $scope.end_alert = function (uuid) {
-        console.log(uuid);
+        LoadingState.setLoadingStateAction(true);
+        $scope.loading_action = LoadingState.getLoadingStateAction();
+
+        AlertsFactory.updateAlert({"active": false, "uuid":uuid},uuid).then(function(data){
+            console.log(data);
+            LoadingState.setLoadingStateAction(false);
+            $scope.loading_action = LoadingState.getLoadingStateAction();
+        }, function(msg){
+            LoadingState.setLoadingStateAction(false);
+            $scope.loading_action = LoadingState.getLoadingStateAction();
+        });
     };
 
     $scope.take_charge = function(uuid){
-        console.log(uuid);
         LoadingState.setLoadingStateAction(true);
         $scope.loading_action = LoadingState.getLoadingStateAction();
-        document.getElementsByClassName('actionable').disabled = true;
 
-        AlertsFactory.takeInCharge({"operator_id": $rootScope.globals.currentUser.id, "uuid":uuid},uuid).then(function(data){
+        AlertsFactory.updateAlert({"operator_id": $rootScope.globals.currentUser.id, "uuid":uuid},uuid).then(function(data){
             console.log(data);
             LoadingState.setLoadingStateAction(false);
             $scope.loading_action = LoadingState.getLoadingStateAction();
