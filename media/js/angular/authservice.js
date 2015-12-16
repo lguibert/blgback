@@ -1,7 +1,7 @@
 app.factory('AuthenticationService', AuthenticationService);
 
-AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$timeout'];
-function AuthenticationService($http, $cookieStore, $rootScope) {
+AuthenticationService.$inject = ['$http', '$cookies', '$rootScope', '$timeout'];
+function AuthenticationService($http, $cookies, $rootScope) {
     var service = {};
 
     service.Login = Login;
@@ -24,23 +24,24 @@ function AuthenticationService($http, $cookieStore, $rootScope) {
         });
     }
 
-    function SetCredentials(username, password) {
+    function SetCredentials(username, password, id) {
         var authdata = Base64.encode(username + ':' + password);
 
         $rootScope.globals = {
             currentUser: {
                 username: username,
+                id: id,
                 authdata: authdata
             }
         };
 
-        $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-        $cookieStore.put('globals', $rootScope.globals);
+        //$http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
+        $cookies.put('globals', $rootScope.globals);
     }
 
     function ClearCredentials() {
         $rootScope.globals = {};
-        $cookieStore.remove('globals');
+        $cookies.remove('globals');
         $http.defaults.headers.common.Authorization = 'Basic ';
     }
 }

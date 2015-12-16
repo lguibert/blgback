@@ -9,19 +9,19 @@ app.controller('LoginController', function ($scope, $rootScope, AuthenticationSe
     $scope.login = function (credentials) {
         //credentials.password = md5(credentials.password);
         AuthenticationService.Login(credentials, function(response){
-            if(response.data.status == 0){
-                console.log(response);
-                AuthenticationService.SetCredentials(credentials.username, credentials.password);
+            if(response.success){
+                AuthenticationService.SetCredentials(credentials.username, credentials.password, response.data.id);
                 $rootScope.logged = true;
                 $location.path('/');
             }else{
-                displayMessage(response.data.message, "error");
+                displayMessage(response.msg, "error");
             }
         });
     };
 
     $scope.logout = function (){
         AuthenticationService.ClearCredentials();
+        $rootScope.logged = false;
         $location.path("/login");
     }
 });

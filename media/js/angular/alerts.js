@@ -12,12 +12,12 @@ app.factory('AlertsFactory', ['$http', '$q', function ($http, $q) {
                 });
             return deferred.promise;
         },
-        endAlert: function (uuid) {
+        takeInCharge: function (json,uuid) {
             var deferred = $q.defer();
             $http({
-                method: 'POST',
-                url: server + 'alert/',
-                data: uuid,
+                method: 'PUT',
+                url: server + 'alerts/'+uuid,
+                data: json,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
                 .success(function (data) {
@@ -51,9 +51,9 @@ app.controller('AlertsController', ['$scope', '$rootScope', 'AlertsFactory', 'Lo
                 }
             }else{
                 console.log("alert existe pas");
+                console.log(data);
                 $scope.alerts = data;
             }
-
 
             LoadingState.setLoadingState(false);
             $scope.loading = LoadingState.getLoadingState();
@@ -88,11 +88,16 @@ app.controller('AlertsController', ['$scope', '$rootScope', 'AlertsFactory', 'Lo
     };
 
     $scope.end_alert = function (uuid) {
+        console.log(uuid);
+    };
+
+    $scope.take_charge = function(uuid){
+        console.log(uuid);
         LoadingState.setLoadingStateAction(true);
         $scope.loading_action = LoadingState.getLoadingStateAction();
         document.getElementsByClassName('actionable').disabled = true;
 
-        AlertsFactory.endAlert(uuid).then(function(data){
+        AlertsFactory.takeInCharge({"operator_id": $rootScope.globals.currentUser.id, "uuid":uuid},uuid).then(function(data){
             console.log(data);
             LoadingState.setLoadingStateAction(false);
             $scope.loading_action = LoadingState.getLoadingStateAction();
@@ -100,5 +105,5 @@ app.controller('AlertsController', ['$scope', '$rootScope', 'AlertsFactory', 'Lo
             LoadingState.setLoadingStateAction(false);
             $scope.loading_action = LoadingState.getLoadingStateAction();
         });
-    };
+    }
 }]);

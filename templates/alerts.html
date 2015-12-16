@@ -11,7 +11,7 @@
                         <div class="primary">Adresse</div>
                         <div class="primary">Date et heure</div>
                         <div class="primary">Numéro de téléphone</div>
-                        <div class="primary">Etat</div>
+                        <div class="primary">Pris en charge par</div>
                         <div class="primary">Action <img ng-controller="MainController" ng-show="loading_action" src="media/img/loading.gif"></div>
                     </th>
                 </tr>
@@ -24,9 +24,9 @@
                             <div class="primary">{{alert.address}}</div>
                             <div class="primary">{{alert.user.firstname}} {{alert.user.lastname}}</div>
                             <div class="primary"><a href="tel:{{alert.user.phone}}">{{alert.user.phone | phoneformat}}</a></div>
-                            <div class="primary">{{alert.state}} </div>
+                            <div class="primary">{{alert.operator.login}} </div>
                             <div class="primary">
-                                <button class="btn btn-default actionable" ng-click="take_charge()">Prendre en charge</button>
+                                <button ng-show="!alert.operator.id" class="btn btn-default actionable" ng-click="take_charge(alert.uuid)">Prendre en charge</button>
                                 <button class="btn btn-default actionable" ng-click="end_alert(alert.uuid)">Terminé</button>
                             </div>
                         </div>
