@@ -10,10 +10,15 @@ app.filter('gender', function () {
     };
 });
 
+app.filter('ceil', function() {
+    return function(input) {
+        return Math.ceil(input);
+    };
+});
+
 app.filter('phoneformat', function () {
     return function (input) {
         if(input.match(/[+]/)){
-            console.log(input.length);
             var deb = input.slice(0,3);
             input = "0" + input.slice(3,input.length);
             var final = "("+deb+") ";

@@ -1,5 +1,5 @@
 var app = angular.module('blgback', ['ngRoute', 'ngCookies']);
-var server = "http://10.133.128.36:3000/";
+var server = "http://blg.anthonydenaud.com/blg-server/";
 
 app.service('LoadingState', ['$rootScope', function ($rootScope) {
     return {

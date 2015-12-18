@@ -124,7 +124,7 @@ a{
   text-align: left;
   vertical-align: middle;
   .primary{
-    min-width: 100%/@num_col+2;
+    width: 100%/@num_col+1;
     display: inline-block;
     position: relative;
     a{
@@ -182,6 +182,9 @@ a{
 
 .seriousness-easy{
   background-color: @bg_easy!important;
+  .details-active{
+    border-top:2px dotted gray!important;
+  }
 }
 
 .hoverable:hover{

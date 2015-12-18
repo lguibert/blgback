@@ -33,7 +33,7 @@
                         <div id="{{alert.uuid}}" class="details">
                             <ul>
                                 <div class="pack">
-                                    <li><span class="label-details">Vitesse:</span> {{alert.speed * 3.6}} km/h</li>
+                                    <li><span class="label-details">Vitesse:</span> {{alert.speed * 3.6 | ceil}} km/h</li>
                                 </div>
                                 <div class="pack">
                                     <li><span class="label-details">Sexe:</span> {{alert.user.gender | gender}}</li>

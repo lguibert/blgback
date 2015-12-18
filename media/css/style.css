@@ -93,7 +93,7 @@ a img {
   vertical-align: middle;
 }
 #table_alerts .primary {
-  min-width: 16.28571429%;
+  width: 15.28571429%;
   display: inline-block;
   position: relative;
 }
@@ -144,6 +144,9 @@ a img {
 }
 .seriousness-easy {
   background-color: #fff768 !important;
+}
+.seriousness-easy .details-active {
+  border-top: 2px dotted gray!important;
 }
 .hoverable:hover {
   cursor: pointer;

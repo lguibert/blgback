@@ -35,7 +35,7 @@ app.factory('AlertsFactory', ['$http', '$q', function ($http, $q) {
 app.controller('AlertsController', ['$scope', '$rootScope', 'AlertsFactory', 'LoadingState', '$interval', function ($scope, $rootScope, AlertsFactory, LoadingState, $interval) {
     refrechAlerts();
 
-   // $interval(refrechAlerts, 5000);
+    $interval(refrechAlerts, 5000); //refrech auto
 
 
     function refrechAlerts(){
@@ -51,7 +51,6 @@ app.controller('AlertsController', ['$scope', '$rootScope', 'AlertsFactory', 'Lo
                 }
             }else{
                 console.log("alert existe pas");
-                console.log(data);
                 $scope.alerts = data;
             }
 
@@ -95,6 +94,7 @@ app.controller('AlertsController', ['$scope', '$rootScope', 'AlertsFactory', 'Lo
             console.log(data);
             LoadingState.setLoadingStateAction(false);
             $scope.loading_action = LoadingState.getLoadingStateAction();
+            refrechAlerts();
         }, function(msg){
             LoadingState.setLoadingStateAction(false);
             $scope.loading_action = LoadingState.getLoadingStateAction();
